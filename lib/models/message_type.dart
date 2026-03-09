@@ -15,17 +15,17 @@ class MessageStructure {
         'warning_code': [87, 8],
       },
       'FLOW_MESSAGE': {
-        'session_id': [4, 10],
-        'run_data_id': [14, 5],
-        'first_5_mins_water': [19, 13],
-        'first_5_mins_fert': [32, 13],
-        'second_5_mins_water': [45, 13],
-        'second_5_mins_fert': [58, 13],
-        'third_5_mins_water': [71, 13],
-        'third_5_mins_fert': [84, 13],
-        'fourth_5_mins_water': [97, 13],
-        'fourth_5_mins_fert': [110, 13],
-        'max_pressure_in_20bins': [123, 8],
+        'session_id' : [4, 14], // largest value 1024, after this it will reset to 1 in firmware.
+        'run_data_id' : [18, 10], // sets 0 on ARM, increments when rundata is packed. 1 = 20 bins (minutes)
+        'first_5_mins_water' : [28, 13], // litres
+        'first_5_mins_fert' : [41, 20], // litres
+        'second_5_mins_water' : [61, 13], // litres
+        'second_5_mins_fert' : [74, 20], // litres
+        'third_5_mins_water' : [94, 13], // litres
+        'third_5_mins_fert' : [107, 20], // litres
+        'fourth_5_mins_water' : [127, 13], // litres
+        'fourth_5_mins_fert' : [140, 20], // litres
+        'max_pressure_in_20bins' : [160, 8], // cmH2O
       },
       'STARTED_MESSAGE': {
         'session_id': [4, 10],
@@ -48,15 +48,15 @@ class MessageStructure {
         'board_firmware_minor_version': [96, 4],
       },
       'END_OF_RUN_MESSAGE': {
-        'session_id': [4, 10],
-        'prefertigation_litres_water': [14, 18],
-        'fertigation_litres_water': [32, 20],
-        'post_fertigation_litres_water': [52, 18],
-        'fertigation_litres_fertiliser': [70, 16],
-        'stop_reason': [86, 5],
-        'final_tank_pressure': [91, 10],
-        'final_battery_voltage': [101, 8],
-        'total_run_battery_amp_hours': [109, 8],
+        'session_id' : [4, 10], // largest value 1024, after this it will reset to 1 in firmware.
+        'prefertigation_litres_water' : [14, 18], // litres
+        'fertigation_litres_water' : [32, 20], // litres
+        'post_fertigation_litres_water' : [52, 18], // litres
+        'fertigation_litres_fertiliser' : [70, 23], // litres (divide raw value by 10)
+        'stop_reason' : [93, 5],
+        'final_tank_pressure' : [98, 10], // cmH2O
+        'final_battery_voltage' : [108, 8], // dV
+        'total_run_battery_amp_hours' : [116, 8], // Ah
       },
     },
     DeviceType.udose: {
