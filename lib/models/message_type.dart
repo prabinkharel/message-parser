@@ -5,17 +5,17 @@ class MessageStructure {
   _structures = {
     DeviceType.udoseAg: {
       'ARM_MESSAGE': {
-        'session_id': [4, 10],
-        'minimum_flowrate': [14, 11],
-        'prefert_minutes': [25, 14],
-        'prefert_units': [39, 1],
-        'prefert_volume': [40, 17],
-        'fertigation_duration_minutes': [57, 14],
-        'fertigation_volume_litres': [71, 16],
-        'warning_code': [87, 8],
+        'session_id': [4, 14],
+        'minimum_flowrate': [18, 11],
+        'prefert_minutes': [29, 14],
+        'prefert_units': [43, 1],
+        'prefert_volume': [44, 17],
+        'fertigation_duration_minutes': [61, 14],
+        'fertigation_volume_litres': [75, 16],
+        'warning_code': [91, 8],
       },
       'FLOW_MESSAGE': {
-        'session_id' : [4, 14], // largest value 1024, after this it will reset to 1 in firmware.
+        'session_id' : [4, 14], // largest value 16384, after this it will reset to 1 in firmware.
         'run_data_id' : [18, 10], // sets 0 on ARM, increments when rundata is packed. 1 = 20 bins (minutes)
         'first_5_mins_water' : [28, 13], // litres
         'first_5_mins_fert' : [41, 20], // litres
@@ -28,12 +28,12 @@ class MessageStructure {
         'max_pressure_in_20bins' : [160, 8], // cmH2O
       },
       'STARTED_MESSAGE': {
-        'session_id': [4, 10],
-        'latitude': [14, 24],
-        'longitude': [38, 25],
-        'current_tank_pressure': [63, 10],
-        'current_battery_voltage': [73, 8],
-        'fertigation_run': [81, 1],
+        'session_id': [4, 14],
+        'latitude': [18, 24],
+        'longitude': [42, 25],
+        'current_tank_pressure': [67, 10],
+        'current_battery_voltage': [77, 8],
+        'fertigation_run': [85, 1],
       },
       'DAILY_MESSAGE': {
         'latitude': [4, 24],
@@ -48,15 +48,15 @@ class MessageStructure {
         'board_firmware_minor_version': [96, 4],
       },
       'END_OF_RUN_MESSAGE': {
-        'session_id' : [4, 10], // largest value 1024, after this it will reset to 1 in firmware.
-        'prefertigation_litres_water' : [14, 18], // litres
-        'fertigation_litres_water' : [32, 20], // litres
-        'post_fertigation_litres_water' : [52, 18], // litres
-        'fertigation_litres_fertiliser' : [70, 23], // litres (divide raw value by 10)
-        'stop_reason' : [93, 5],
-        'final_tank_pressure' : [98, 10], // cmH2O
-        'final_battery_voltage' : [108, 8], // dV
-        'total_run_battery_amp_hours' : [116, 8], // Ah
+        'session_id' : [4, 14], // largest value 16384, after this it will reset to 1 in firmware.
+        'prefertigation_litres_water' : [18, 18], // litres
+        'fertigation_litres_water' : [36, 20], // litres
+        'post_fertigation_litres_water' : [56, 18], // litres
+        'fertigation_litres_fertiliser' : [74, 23], // litres (divide raw value by 10)
+        'stop_reason' : [97, 5],
+        'final_tank_pressure' : [102, 10], // cmH2O
+        'final_battery_voltage' : [112, 8], // dV
+        'total_run_battery_amp_hours' : [120, 8], // Ah
       },
     },
     DeviceType.udose: {
